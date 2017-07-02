@@ -1,4 +1,3 @@
-// src/components/Hello.tsx
 import './Hello.css';
 import * as React from 'react';
 

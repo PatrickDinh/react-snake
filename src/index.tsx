@@ -9,6 +9,9 @@ import { Provider } from 'react-redux';
 const store = createStore<StoreState>(enthusiasm, {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
+  todos: [
+    {name: 'Learn React'}
+  ]
 });
 
 ReactDOM.render(
