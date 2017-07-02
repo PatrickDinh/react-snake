@@ -1,8 +1,8 @@
-import Todo from "./Todo";
+import Todo, { TodoObj } from "./Todo";
 import * as React from 'react';
 
 export interface Props {
-  todoList: Todo[],
+  todoList: TodoObj[],
   onAddTodo?: () => void;
 }
 
@@ -14,7 +14,7 @@ class TodoList extends React.Component<Props, object> {
       <div className="todoList">
         <div>
           {todoList.map(todo =>
-            <Todo name={todo.name} completed={todo.completed}></Todo>
+            <Todo theTodo={todo}></Todo>
           )}
         </div>
         <div>

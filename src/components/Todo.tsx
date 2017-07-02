@@ -1,19 +1,27 @@
 import * as React from 'react';
 
 export interface Props {
-  name: string;
-  completed: boolean;
+  theTodo: TodoObj;
 }
 
 class Todo extends React.Component<Props, object> {
   render() {
-    const { name } = this.props;
+    const { theTodo } = this.props;
 
     return (
       <div>
-        Todo: {name}
+        Todo: {theTodo.name}, completed {theTodo.completed}
       </div>
     );
+  }
+}
+
+export class TodoObj {
+  name: string;
+  completed: boolean;
+
+  constructor(name: string) {
+    this.name = name;
   }
 }
 

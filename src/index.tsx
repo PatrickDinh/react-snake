@@ -3,19 +3,19 @@ import * as ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
-import Hello from './containers/Hello';
+import TodoList from "./containers/TodoList";
 import { Provider } from 'react-redux';
-import Todo from "./components/Todo";
+import { TodoObj } from "./components/Todo";
 
 const store = createStore<StoreState>(enthusiasm, {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
-  todoList: [ new Todo() ]
+  todoList: [ new TodoObj('Learn React') ]
 });
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <TodoList />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
