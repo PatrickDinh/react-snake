@@ -5,12 +5,16 @@ export interface Props {
   completed: boolean;
 }
 
-function Todo({ name } : Props) {
-  return (
-    <div>
-      Todo: {name}
-    </div>
-  );
+class Todo extends React.Component<Props, object> {
+  render() {
+    const { name } = this.props;
+
+    return (
+      <div>
+        Todo: {name}
+      </div>
+    );
+  }
 }
 
 export default Todo;

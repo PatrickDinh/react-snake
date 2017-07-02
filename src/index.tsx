@@ -5,13 +5,12 @@ import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
 import Hello from './containers/Hello';
 import { Provider } from 'react-redux';
+import Todo from "./components/Todo";
 
 const store = createStore<StoreState>(enthusiasm, {
   enthusiasmLevel: 1,
   languageName: 'TypeScript',
-  todos: [
-    {name: 'Learn React'}
-  ]
+  todoList: [ new Todo() ]
 });
 
 ReactDOM.render(
