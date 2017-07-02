@@ -21,3 +21,9 @@ export function decrementEnthusiasm(): DecrementEnthusiasm {
     type: constants.DECREMENT_ENTHUSIASM
   }
 }
+
+export function addTodo() {
+  return {
+    type: constants.ADD_TODO
+  }
+}
