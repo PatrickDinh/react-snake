@@ -17,10 +17,12 @@ class Todo extends React.Component<Props, object> {
 }
 
 export class TodoObj {
+  id: number;
   name: string;
   completed: boolean;
 
-  constructor(name: string) {
+  constructor(id: number, name: string) {
+    this.id = id;
     this.name = name;
   }
 }

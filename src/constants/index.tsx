@@ -5,3 +5,4 @@ export const DECREMENT_ENTHUSIASM = 'DECREMENT_ENTHUSIASM';
 export type DECREMENT_ENTHUSIASM = typeof DECREMENT_ENTHUSIASM;
 
 export const ADD_TODO = 'ADD_TODO';
+export type ADD_TODO = typeof ADD_TODO;
