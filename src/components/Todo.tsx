@@ -10,7 +10,7 @@ class Todo extends React.Component<Props, object> {
 
     return (
       <div>
-        Todo: {theTodo.name}, completed {theTodo.completed}
+        Todo: {theTodo.name}, {theTodo.completed ? 'completed' : 'on going' }
       </div>
     );
   }

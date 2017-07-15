@@ -1,4 +1,4 @@
-import TodoList from '../components/TodoList';
+import TodoList, { DispatchProps } from '../components/TodoList';
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { StoreState } from '../types/index';
@@ -10,7 +10,7 @@ export function mapStateToProps(state: StoreState) {
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.AddTodoAction>): DispatchProps {
   return {
     onAddTodo: () => dispatch(actions.addTodo())
   };
