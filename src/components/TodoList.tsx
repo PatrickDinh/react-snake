@@ -6,12 +6,12 @@ export interface Props {
   onAddTodo?: () => void;
 }
 
-function TodoList({ todoList, onAddTodo }: Props) {
+function TodoList({ onAddTodo, todoList }: Props) {
   return (
     <div className="todoList">
         <div>
           {todoList.map(todo =>
-            <Todo key="{todo.id}" theTodo={todo} />
+            <Todo key={todo.id} theTodo={todo} />
           )}
         </div>
         <div>

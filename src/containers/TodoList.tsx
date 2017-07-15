@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { StoreState } from '../types/index';
 import { Dispatch } from "redux";
 
-export function mapStateToProps({ todoList }: StoreState) {
-  console.log(todoList);
-  return { todoList };
+export function mapStateToProps(state: StoreState) {
+  return { 
+    todoList: state.todoList
+  };
 }
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
