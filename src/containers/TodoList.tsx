@@ -12,7 +12,7 @@ export function mapStateToProps(state: StoreState) {
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.AddTodoAction>): DispatchProps {
   return {
-    onAddTodo: () => dispatch(actions.addTodo())
+    onAddTodo: (text: string) => dispatch(actions.addTodo(text))
   };
 }
 

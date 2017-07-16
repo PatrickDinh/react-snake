@@ -7,7 +7,7 @@ export function todoListReducer(state: StoreState, action: AddTodoAction): Store
   switch (action.type) {
     case ADD_TODO:
       const newId = state.todoList.length + 1;
-      const newTodo = new TodoObj(newId, `Learn another thing id = ${newId}`);
+      const newTodo = new TodoObj(newId, action.value);
 
       return Object.assign({}, state, { todoList: [...state.todoList,  newTodo] });
   }

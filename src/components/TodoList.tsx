@@ -7,7 +7,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  onAddTodo: () => void;
+  onAddTodo: (text: string) => void;
 }
 
 class TodoList extends React.Component<StateProps & DispatchProps, object> {
@@ -21,7 +21,7 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
             <Todo key={todo.id} theTodo={todo} />
           )}
         </div>
-        <NewTodo />
+        <NewTodo onAddTodo={onAddTodo}/>
       </div>
     );
   }

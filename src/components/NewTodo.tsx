@@ -9,6 +9,14 @@ export interface State {
 }
 
 export class NewTodo extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props);
+
+        this.state = {
+            text: ''
+        };
+    }
+
     handleSave() {
         this.props.onAddTodo(this.state.text);
     }
