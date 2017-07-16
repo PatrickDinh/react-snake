@@ -1,5 +1,6 @@
 import Todo, { TodoObj } from './Todo';
 import * as React from 'react';
+import { NewTodo } from "./NewTodo";
 
 export interface StateProps {
   todoList: TodoObj[];
@@ -20,9 +21,7 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
             <Todo key={todo.id} theTodo={todo} />
           )}
         </div>
-        <div>
-          <button onClick={onAddTodo}>+</button>
-        </div>
+        <NewTodo />
       </div>
     );
   }
