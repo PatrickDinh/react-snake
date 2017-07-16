@@ -1,27 +1,29 @@
-import Todo, { TodoObj } from './Todo';
+import Todo from './Todo';
 import * as React from 'react';
-import { NewTodo } from "./NewTodo";
+import TodoModel from "../models/TodoModel";
+import { AddTodo } from "./AddTodo";
 
 export interface StateProps {
-  todoList: TodoObj[];
+  todoList: TodoModel[];
 }
 
 export interface DispatchProps {
   onAddTodo: (text: string) => void;
+  onTodoStatusUpdated: (id: number, completed: boolean) => void;
 }
 
 class TodoList extends React.Component<StateProps & DispatchProps, object> {
   render() {
-    const { todoList, onAddTodo } = this.props;
-
+    const { todoList, onAddTodo, onTodoStatusUpdated } = this.props;
+    console.log(todoList);
     return (
       <div className="todoList">
         <div>
           {todoList.map(todo =>
-            <Todo key={todo.id} theTodo={todo} />
+            <Todo key={todo.id} theTodo={todo} onTodoStatusUpdated={onTodoStatusUpdated}/>
           )}
         </div>
-        <NewTodo onAddTodo={onAddTodo}/>
+        <AddTodo onAddTodo={onAddTodo}/>
       </div>
     );
   }

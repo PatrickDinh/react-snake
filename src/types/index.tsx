@@ -1,5 +1,5 @@
-import { TodoObj } from '../components/Todo';
+import TodoModel from "../models/TodoModel";
 
 export interface StoreState {
-  todoList: TodoObj[];
+  todoList: TodoModel[];
 }

@@ -4,11 +4,11 @@ import { createStore } from 'redux';
 import { StoreState } from './types/index';
 import TodoList from './containers/TodoList';
 import { Provider } from 'react-redux';
-import { TodoObj } from './components/Todo';
 import { todoListReducer } from "./reducers/TodoListReducer";
+import TodoModel from "./models/TodoModel";
 
 const store = createStore<StoreState>(todoListReducer, {
-  todoList: [ new TodoObj(1, 'Learn React') ]
+  todoList: [ new TodoModel(1, 'Learn React') ]
 });
 
 ReactDOM.render(

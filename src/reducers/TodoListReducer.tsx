@@ -1,15 +1,17 @@
-import { AddTodoAction } from '../actions';
+import { TodoActions } from '../actions';
 import { StoreState } from '../types/index';
-import { ADD_TODO } from '../constants/index';
-import { TodoObj } from "../components/Todo";
+import * as constants from '../constants/index';
+import TodoModel from "../models/TodoModel";
 
-export function todoListReducer(state: StoreState, action: AddTodoAction): StoreState {
+export function todoListReducer(state: StoreState, action: TodoActions): StoreState {
   switch (action.type) {
-    case ADD_TODO:
-      const newId = state.todoList.length + 1;
-      const newTodo = new TodoObj(newId, action.value);
-
+    case constants.ADD_TODO:
+      const newTodo = new TodoModel(state.todoList.length + 1, action.value);
       return Object.assign({}, state, { todoList: [...state.todoList,  newTodo] });
+    case constants.UPDATE_TODO_STATUS:
+      let todo = state.todoList.find(t => t.id === action.id);
+      if (todo) todo.completed = action.completed;
+      return Object.assign({}, state, { todoList: [...state.todoList] });
   }
 
   return state;

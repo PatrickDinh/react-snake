@@ -10,9 +10,10 @@ export function mapStateToProps(state: StoreState) {
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.AddTodoAction>): DispatchProps {
+export function mapDispatchToProps(dispatch: Dispatch<actions.TodoActions>): DispatchProps {
   return {
-    onAddTodo: (text: string) => dispatch(actions.addTodo(text))
+    onAddTodo: (text: string) => dispatch(actions.addTodo(text)),
+    onTodoStatusUpdated: (id: number, completed: boolean) => dispatch(actions.updateTodoStatus(id, completed)),
   };
 }
 
