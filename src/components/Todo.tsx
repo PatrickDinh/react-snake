@@ -9,7 +9,8 @@ export interface Props {
 
 export interface State {
   completed: boolean;
-  todoId: number;
+  id: number;
+  idString: string;
 }
 
 export default class Todo extends React.Component<Props, State> {
@@ -17,16 +18,15 @@ export default class Todo extends React.Component<Props, State> {
     super(props);
     
     this.state = {
-      completed: props.theTodo.completed,
-      todoId: props.theTodo.id
+      completed: !!props.theTodo.completed,
+      id: props.theTodo.id,
+      idString: props.theTodo.id.toString()
     }
   }
 
   onCheckboxChanged(e:any) {
-    if (!!e.target.checked !== this.state.completed) {
-      this.setState({...this.state, completed: !this.state.completed});
-      this.props.onTodoStatusUpdated(this.state.todoId, e.target.checked);
-    }
+    this.setState({...this.state, completed: !this.state.completed});
+    this.props.onTodoStatusUpdated(this.state.id, e.target.checked);
   }
 
   render() {
@@ -34,8 +34,13 @@ export default class Todo extends React.Component<Props, State> {
 
     return (
       <div className="todo">
-        <input type="checkbox" id={this.state.todoId.toString()} checked={this.state.completed} onChange={this.onCheckboxChanged.bind(this)}/>
-        <label htmlFor={this.state.todoId.toString()}>{theTodo.name}</label>
+        <input type="checkbox" 
+          id={this.state.idString}
+          checked={this.state.completed}
+          onChange={this.onCheckboxChanged.bind(this)}/>
+        <label htmlFor={this.state.idString}>
+          <span>{theTodo.name}</span>
+        </label>
       </div>
     );
   }
