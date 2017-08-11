@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Todo.css';
 import TodoModel from "../models/TodoModel";
 
 export interface Props {
@@ -8,21 +9,23 @@ export interface Props {
 
 export interface State {
   completed: boolean;
+  todoId: number;
 }
 
-class Todo extends React.Component<Props, State> {
+export default class Todo extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     
     this.state = {
-      completed: props.theTodo.completed
+      completed: props.theTodo.completed,
+      todoId: props.theTodo.id
     }
   }
 
-  onCheckboxChanged(id: number, e:any) {
+  onCheckboxChanged(e:any) {
     if (!!e.target.checked !== this.state.completed) {
-      this.setState(Object.assign({}, this.state, !this.state.completed));
-      this.props.onTodoStatusUpdated(id, e.target.checked);
+      this.setState({...this.state, completed: !this.state.completed});
+      this.props.onTodoStatusUpdated(this.state.todoId, e.target.checked);
     }
   }
 
@@ -30,12 +33,10 @@ class Todo extends React.Component<Props, State> {
     const { theTodo } = this.props;
 
     return (
-      <div>
-        <input type="checkbox" checked={this.state.completed} onChange={this.onCheckboxChanged.bind(this, theTodo.id)}/>
-        {theTodo.name}
+      <div className="todo">
+        <input type="checkbox" id={this.state.todoId.toString()} checked={this.state.completed} onChange={this.onCheckboxChanged.bind(this)}/>
+        <label htmlFor={this.state.todoId.toString()}>{theTodo.name}</label>
       </div>
     );
   }
 }
-
-export default Todo;
