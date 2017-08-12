@@ -1,7 +1,16 @@
+@import "../font-awesome/font-awesome.css";
 .todo {
-    padding-left: 27px;
+    padding-left: 34px;
+    line-height: 35px;
     input[type="checkbox"] {
         display: none;
+        &:checked+label span::after {
+            content: '\f00c';
+            font-family: 'FontAwesome';
+            left: -29px;
+            top: -8px;
+            transition: color .2s;
+        }
     }
     label {
         position: relative;
@@ -20,22 +29,13 @@
             &::before {
                 width: 27px;
                 height: 27px;
-                background-color: #fff;
+                background-color: #ddd;
                 left: -35px;
                 box-sizing: border-box;
                 border: 3px solid transparent;
-                transition: border-color .2s;
             }
             &:hover::before {
                 border: 3px solid #F0FF76;
-            }
-            &::after {
-                content: '\f00c';
-                font-family: 'FontAwesome';
-                left: -31px;
-                top: 2px;
-                color: transparent;
-                transition: color .2s;
             }
         }
     }
