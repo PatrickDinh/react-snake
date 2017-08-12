@@ -1,7 +1,7 @@
-import Todo from './Todo';
+import Todo from '../Todo/Todo';
 import * as React from 'react';
-import TodoModel from "../models/TodoModel";
-import { AddTodo } from "./AddTodo";
+import TodoModel from "../../models/TodoModel";
+import { AddTodo } from "../AddTodo/AddTodo";
 
 export interface StateProps {
   todoList: TodoModel[];

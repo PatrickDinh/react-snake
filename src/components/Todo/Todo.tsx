@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Todo.css';
-import TodoModel from "../models/TodoModel";
+import TodoModel from "../../models/TodoModel";
 
 export interface Props {
   theTodo: TodoModel;

@@ -1,4 +1,4 @@
-import TodoList, { DispatchProps } from '../components/TodoList';
+import TodoList, { DispatchProps } from '../components/TodoList/TodoList';
 import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { StoreState } from '../types/index';
