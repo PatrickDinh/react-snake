@@ -15,7 +15,7 @@ export interface DispatchProps {
 class TodoList extends React.Component<StateProps & DispatchProps, object> {
   render() {
     const { todoList, onAddTodo, onTodoStatusUpdated } = this.props;
-    console.log(todoList);
+
     return (
       <div className="todoList">
         <div>
