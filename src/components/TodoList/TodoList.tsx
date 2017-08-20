@@ -8,7 +8,7 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-  onAddTodo: (text: string) => void;
+  onAddTodo: (text: string) => Promise<TodoModel>;
   onTodoStatusUpdated: (id: number, completed: boolean) => void;
   onTodoVisibilityUpdated: (id: number, shown: boolean) => void;
 }
@@ -22,8 +22,9 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
 
   addTodo(name: string) {
     const {onAddTodo, onTodoVisibilityUpdated } = this.props;
-    onAddTodo(name);
-    setTimeout(() => onTodoVisibilityUpdated(2, true), 2000);
+    onAddTodo(name).then(newTodo => {
+      setTimeout(() => onTodoVisibilityUpdated(newTodo.id, true), 10);
+    });
   }
 
   render() {

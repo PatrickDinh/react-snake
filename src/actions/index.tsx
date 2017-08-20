@@ -1,8 +1,9 @@
 import * as constants from '../constants';
+import TodoModel from '../models/TodoModel';
 
 export interface AddTodo {
   type: constants.ADD_TODO;
-  value: string;
+  todo: TodoModel;
 }
 
 export interface UpdateTodoStatus {
@@ -21,25 +22,25 @@ export type TodoActions = AddTodo
   | UpdateTodoStatus
   | UpdateToDoVisibility;
 
-export function addTodo(text: string): AddTodo {
+export function addTodo(todo: TodoModel): AddTodo {
   return {
     type: constants.ADD_TODO,
-    value: text
+    todo
   };
 }
 
 export function updateTodoStatus(id: number, completed: boolean): UpdateTodoStatus {
   return {
     type: constants.UPDATE_TODO_STATUS,
-    id: id,
-    completed: completed
+    id,
+    completed
   };
 }
 
 export function updateToDoVisibility(id: number, shown: boolean): UpdateToDoVisibility {
   return {
     type: constants.UPDATE_TODO_VISIBILITY,
-    id: id,
-    shown: shown
+    id,
+    shown
   };
 }

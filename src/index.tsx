@@ -7,9 +7,11 @@ import { Provider } from 'react-redux';
 import { todoListReducer } from './reducers/TodoListReducer';
 import TodoModel from './models/TodoModel';
 
-const store = createStore<StoreState>(todoListReducer, {
+const initialStage = {
   todoList: [ new TodoModel(1, 'Learn React') ]
-});
+};
+
+const store = createStore<StoreState>(todoListReducer, initialStage);
 
 ReactDOM.render(
   <Provider store={store}>

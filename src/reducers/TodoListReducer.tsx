@@ -5,11 +5,10 @@ import TodoModel from '../models/TodoModel';
 
 type ActionOnTodoModel = (todo: TodoModel) => void;
 
-function addNewTodo(state: StoreState, name: string): StoreState {
-  const newTodo = new TodoModel(state.todoList.length + 1, name);
+function addNewTodo(state: StoreState, todo: TodoModel): StoreState {
   return {
     ...state,
-    todoList: [...state.todoList, newTodo]
+    todoList: [...state.todoList, todo]
   };
 }
 
@@ -38,7 +37,7 @@ function updateTodoVisibility(state: StoreState, id: number, shown: boolean): St
 export function todoListReducer(state: StoreState, action: TodoActions): StoreState {
   switch (action.type) {
     case constants.ADD_TODO:
-      return addNewTodo(state, action.value);
+      return addNewTodo(state, action.todo);
     case constants.UPDATE_TODO_STATUS:
       return updateTodoStatus(state, action.id, action.completed);
     case constants.UPDATE_TODO_VISIBILITY:
