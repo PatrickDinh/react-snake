@@ -15,6 +15,9 @@ export class AddTodo extends React.Component<Props, State> {
     this.state = {
       text: ''
     };
+
+    this.handleSave = this.handleSave.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleSave() {
@@ -24,17 +27,19 @@ export class AddTodo extends React.Component<Props, State> {
     };
   }
 
-  handleChange(e: any) {
+  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     this.setState({ text: e.target.value.trim() });
   }
 
   render() {
     return (
       <div>
-        <input type="text"
+        <input
+          type="text"
           value={this.state.text}
-          onChange={this.handleChange.bind(this)} />
-        <button onClick={this.handleSave.bind(this)}>+</button>
+          onChange={this.handleChange}
+        />
+        <button onClick={this.handleSave}>+</button>
       </div>
     );
   }

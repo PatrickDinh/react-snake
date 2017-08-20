@@ -11,13 +11,21 @@ export interface UpdateTodoStatus {
   completed: boolean;
 }
 
-export type TodoActions = AddTodo | UpdateTodoStatus;
+export interface UpdateToDoVisibility {
+  type: constants.UPDATE_TODO_VISIBILITY;
+  id: number;
+  shown: boolean;
+}
+
+export type TodoActions = AddTodo 
+  | UpdateTodoStatus
+  | UpdateToDoVisibility;
 
 export function addTodo(text: string): AddTodo {
   return {
     type: constants.ADD_TODO,
     value: text
-  }
+  };
 }
 
 export function updateTodoStatus(id: number, completed: boolean): UpdateTodoStatus {
@@ -25,5 +33,13 @@ export function updateTodoStatus(id: number, completed: boolean): UpdateTodoStat
     type: constants.UPDATE_TODO_STATUS,
     id: id,
     completed: completed
-  }
+  };
+}
+
+export function updateToDoVisibility(id: number, shown: boolean): UpdateToDoVisibility {
+  return {
+    type: constants.UPDATE_TODO_VISIBILITY,
+    id: id,
+    shown: shown
+  };
 }
