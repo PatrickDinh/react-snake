@@ -2,13 +2,14 @@ import Todo from '../Todo/Todo';
 import * as React from 'react';
 import TodoModel from '../../models/TodoModel';
 import { AddTodo } from '../AddTodo/AddTodo';
+import { BlahAction } from '../../actions/index';
 
 export interface StateProps {
   todoList: TodoModel[];
 }
 
 export interface DispatchProps {
-  onAddTodo: (text: string) => Promise<TodoModel>;
+  onAddTodo: (text: string) => BlahAction<TodoModel>;
   onTodoStatusUpdated: (id: number, completed: boolean) => void;
   onTodoVisibilityUpdated: (id: number, shown: boolean) => void;
 }

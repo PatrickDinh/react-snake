@@ -3,7 +3,6 @@ import * as actions from '../actions/index';
 import { connect } from 'react-redux';
 import { StoreState } from '../types/index';
 import { Dispatch } from 'redux';
-import TodoModel from '../models/TodoModel';
 
 export function mapStateToProps(state: StoreState) {
   return { 
@@ -13,11 +12,7 @@ export function mapStateToProps(state: StoreState) {
 
 export function mapDispatchToProps(dispatch: Dispatch<actions.TodoActions>): DispatchProps {
   return {
-    onAddTodo: (name: string) => {
-      const todo = new TodoModel(2, name);
-      dispatch(actions.addTodo(todo));
-      return Promise.resolve(todo);
-    },
+    onAddTodo: (name: string) => dispatch(actions.onAddTodoBlah(name)),
     onTodoStatusUpdated: (id: number, completed: boolean) => dispatch(actions.updateTodoStatus(id, completed)),
     onTodoVisibilityUpdated: (id: number, shown: boolean) => dispatch(actions.updateToDoVisibility(id, shown)),
   };
