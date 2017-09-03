@@ -1,7 +1,5 @@
 import * as constants from '../constants';
 import TodoModel from '../models/TodoModel';
-import { StoreState } from '../types/index';
-import { Dispatch } from 'react-redux';
 
 export interface AddTodo {
   type: constants.ADD_TODO;
@@ -20,9 +18,7 @@ export interface UpdateToDoVisibility {
   shown: boolean;
 }
 
-export type TodoActions = AddTodo 
-  | UpdateTodoStatus
-  | UpdateToDoVisibility;
+export type TodoActions = AddTodo | UpdateTodoStatus | UpdateToDoVisibility;
 
 export function addTodo(todo: TodoModel): AddTodo {
   return {
@@ -30,16 +26,6 @@ export function addTodo(todo: TodoModel): AddTodo {
     todo
   };
 }
-
-export type BlahAction<T> = (dispatch: Dispatch<TodoActions>, getState: () => StoreState) => Promise<T>;
-
-export const onAddTodoBlah = (name: string): BlahAction<TodoModel> => {
-  return(dispatch: Dispatch<TodoActions>, getState: () => StoreState) => {
-    const todo = new TodoModel(getState().todoList.length, name);
-    dispatch(addTodo(todo));
-    return Promise.resolve(todo);
-  };
-};
 
 export function updateTodoStatus(id: number, completed: boolean): UpdateTodoStatus {
   return {
