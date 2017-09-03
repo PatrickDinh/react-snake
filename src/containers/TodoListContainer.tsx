@@ -21,7 +21,7 @@ const getNewTodoModel = (name: string): ThunkAction<Promise<TodoModel>, StoreSta
 const addTodoWithAnimation = async (dispatch: Dispatch<StoreState>, name: string) => {
   let model = await dispatch(getNewTodoModel(name));
   await dispatch(actions.addTodo(model));
-  setTimeout(() => dispatch(actions.updateToDoVisibility(model.id, true)), 1000);
+  setTimeout(() => dispatch(actions.updateToDoVisibility(model.id, true)), 10);
 };
 
 export function mapDispatchToProps(dispatch: Dispatch<StoreState>): DispatchProps {

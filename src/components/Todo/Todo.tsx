@@ -33,7 +33,7 @@ export default class Todo extends React.Component<Props, State> {
     const { theTodo } = this.props;
 
     return (
-      <div className={`todo ${theTodo.shown ? 'shown' : ''}`}>
+      <div className={`todo ${theTodo.shown ? 'shown' : 'hide'}`}>
         <input
           type="checkbox"
           id={this.state.id.toString()}

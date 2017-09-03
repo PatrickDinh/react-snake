@@ -1,7 +1,13 @@
 @import "../../font-awesome/scss/font-awesome.css";
+
+$todoHeight: 35px;
+
 .todo {
     padding-left: 34px;
-    line-height: 35px;
+    line-height: $todoHeight;
+    transition: height ease-in-out .3s;
+    overflow: hidden;
+
     input[type="checkbox"] {
         display: none;
         &:checked+label span::after {
@@ -38,5 +44,11 @@
                 border: 3px solid #F0FF76;
             }
         }
+    }
+    &.hide {
+        height: 0;
+    }
+    &.shown {
+        height: $todoHeight;
     }
 }
