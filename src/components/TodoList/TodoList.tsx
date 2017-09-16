@@ -20,15 +20,24 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
 
   render() {
     const { todoList, onAddTodo, onTodoStatusUpdated } = this.props;
+    const outStandingTodos = todoList.filter(td => !td.completed);
+    const doneTodos = todoList.filter(td => td.completed);
 
     return (
       <div className="todoList">
+        <h1>Outstanding</h1>
         <div>
-          {todoList.map(todo =>
+          {outStandingTodos.map(todo =>
             <Todo key={todo.id} theTodo={todo} onTodoStatusUpdated={onTodoStatusUpdated}/>
           )}
         </div>
         <AddTodo onAddTodo={onAddTodo}/>
+        <h1>Done</h1>
+        <div>
+          {doneTodos.map(todo =>
+            <Todo key={todo.id} theTodo={todo} onTodoStatusUpdated={onTodoStatusUpdated}/>
+          )}
+        </div>
       </div>
     );
   }
