@@ -10,7 +10,6 @@ export interface StateProps {
 export interface DispatchProps {
   onAddTodo: (text: string) => void;
   onTodoStatusUpdated: (id: number, completed: boolean) => void;
-  onTodoVisibilityUpdated: (id: number, shown: boolean) => void;
 }
 
 class TodoList extends React.Component<StateProps & DispatchProps, object> {

@@ -24,11 +24,19 @@ const addTodoWithAnimation = async (dispatch: Dispatch<StoreState>, name: string
   setTimeout(() => dispatch(actions.updateToDoVisibility(model.id, true)), 10);
 };
 
+const updateTodoStatusWithAnimation = async (dispatch: Dispatch<StoreState>, id: number, completed: boolean) => {
+  dispatch(actions.updateToDoVisibility(id, false));
+  setTimeout(() => {
+              dispatch(actions.updateTodoStatus(id, completed));
+              setTimeout(() => dispatch(actions.updateToDoVisibility(id, true)), 30);
+            },
+             300);
+};
+
 export function mapDispatchToProps(dispatch: Dispatch<StoreState>): DispatchProps {
   return {
     onAddTodo: (name: string) => addTodoWithAnimation(dispatch, name),
-    onTodoStatusUpdated: (id: number, completed: boolean) => dispatch(actions.updateTodoStatus(id, completed)),
-    onTodoVisibilityUpdated: (id: number, shown: boolean) => dispatch(actions.updateToDoVisibility(id, shown)),
+    onTodoStatusUpdated: (id: number, completed: boolean) => updateTodoStatusWithAnimation(dispatch, id, completed)
   };
 }
 
