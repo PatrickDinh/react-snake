@@ -29,11 +29,15 @@ export default class Todo extends React.Component<Props, State> {
     this.props.onTodoStatusUpdated(this.state.id, e.target.checked);
   }
 
+  getCssClass(todo: TodoModel) {
+    return `todo ${todo.shown ? 'shown' : 'hide'} ${todo.completed ? 'completed' : ''}`;
+  }
+
   render() {
     const { theTodo } = this.props;
 
     return (
-      <div className={`todo ${theTodo.shown ? 'shown' : 'hide'}`}>
+      <div className={this.getCssClass(theTodo)}>
         <input
           type="checkbox"
           id={this.state.id.toString()}
