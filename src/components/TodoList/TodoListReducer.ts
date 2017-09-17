@@ -1,7 +1,7 @@
-import { TodoActions } from '../actions';
-import { StoreState } from '../types/index';
-import * as constants from '../constants/index';
-import TodoModel from '../models/TodoModel';
+import { TodoActions } from '../../actions';
+import { StoreState } from '../../types/index';
+import * as constants from '../../constants/index';
+import TodoModel from '../../models/TodoModel';
 
 type ActionOnTodoModel = (todo: TodoModel) => TodoModel;
 

@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { StoreState } from './types/index';
 import TodoList from './components/TodoList/TodoListContainer';
 import { Provider } from 'react-redux';
-import { todoListReducer } from './reducers/TodoListReducer';
+import { todoListReducer } from './components/TodoList/TodoListReducer';
 import TodoModel from './models/TodoModel';
 import thunk from 'redux-thunk';
 
