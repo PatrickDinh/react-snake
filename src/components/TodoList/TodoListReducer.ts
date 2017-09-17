@@ -25,18 +25,27 @@ function findAndUpdateTodoModel(state: StoreState, id: number, actionOnTodoModel
   };
 }
 
-function updateTodoStatus(state: StoreState, id: number, completed: boolean): StoreState {
-  if (completed) {
-    return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
-      ...x,
-      completed: true,
-      completedTime: moment().toDate()
-    }));
-  }
+function completeTodo(state: StoreState, id: number): StoreState {
   return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
     ...x,
-    completed: false
+    completed: true,
+    completedTime: moment().toDate()
   }));
+}
+
+function undoneTodo(state: StoreState, id: number): StoreState {
+  return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
+    ...x,
+    completed: false,
+    completedTime: new Date(2000, 0, 1)
+  }));
+}
+
+function updateTodoStatus(state: StoreState, id: number, completed: boolean): StoreState {
+  if (completed) {
+    return completeTodo(state, id);
+  }
+  return undoneTodo(state, id);
 }
 
 function updateTodoVisibility(state: StoreState, id: number, shown: boolean): StoreState {
