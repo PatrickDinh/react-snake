@@ -2,6 +2,7 @@ import { TodoActions } from '../../actions';
 import { StoreState } from '../../types/index';
 import * as constants from '../../constants/index';
 import TodoModel from '../../models/TodoModel';
+import * as moment from 'moment';
 
 type ActionOnTodoModel = (todo: TodoModel) => TodoModel;
 
@@ -25,17 +26,24 @@ function findAndUpdateTodoModel(state: StoreState, id: number, actionOnTodoModel
 }
 
 function updateTodoStatus(state: StoreState, id: number, completed: boolean): StoreState {
-  return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
+  if (completed) {
+    return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
       ...x,
-      completed
-   }));
+      completed: true,
+      completedTime: moment().toDate()
+    }));
+  }
+  return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
+    ...x,
+    completed: false
+  }));
 }
 
 function updateTodoVisibility(state: StoreState, id: number, shown: boolean): StoreState {
   return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
     ...x,
     shown
- }));
+  }));
 }
 
 export function todoListReducer(state: StoreState, action: TodoActions): StoreState {

@@ -13,6 +13,12 @@
   version "20.0.2"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-20.0.2.tgz#86c751121fb53dbd39bb1a08c45083da13f2dc67"
 
+"@types/moment@^2.13.0":
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/@types/moment/-/moment-2.13.0.tgz#604ebd189bc3bc34a1548689404e61a2a4aac896"
+  dependencies:
+    moment "*"
+
 "@types/node@^8.0.6":
   version "8.0.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.6.tgz#ed2c3e011cb51ccd3cf874989130f1b9ffe06069"
@@ -3210,6 +3216,10 @@ mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0, mkd
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-0.5.1.tgz#30057438eac6cf7f8c4767f38648d6697d75c903"
   dependencies:
     minimist "0.0.8"
+
+moment@*, moment@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.18.1.tgz#c36193dd3ce1c2eed2adb7c802dbbc77a81b1c0f"
 
 ms@0.7.1:
   version "0.7.1"

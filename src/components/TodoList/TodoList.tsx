@@ -12,6 +12,10 @@ export interface DispatchProps {
   onTodoStatusUpdated: (id: number, completed: boolean) => void;
 }
 
+const timeComparer = (t1: Date, t2: Date): number => {
+  return t2.getTime() - t1.getTime();
+};
+
 class TodoList extends React.Component<StateProps & DispatchProps, object> {
   constructor() {
     super();
@@ -19,8 +23,8 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
 
   render() {
     const { todoList, onAddTodo, onTodoStatusUpdated } = this.props;
-    const outStandingTodos = todoList.filter(td => !td.completed);
-    const doneTodos = todoList.filter(td => td.completed);
+    const outStandingTodos = todoList.filter(td => !td.completed).sort((a, b) => a.id - b.id);
+    const doneTodos = todoList.filter(td => td.completed).sort((a, b) => timeComparer(a.completedTime, b.completedTime));
 
     return (
       <div className="todoList">
