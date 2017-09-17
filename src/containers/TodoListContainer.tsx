@@ -12,6 +12,10 @@ export function mapStateToProps(state: StoreState) {
   };
 }
 
+const timeOut = (ms: number): Promise<{}> => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 const getNewTodoModel = (name: string): ThunkAction<Promise<TodoModel>, StoreState, null> => {
   return (dispatch: Dispatch<StoreState>, getState: () => StoreState) => {
     return Promise.resolve(new TodoModel(getState().todoList.length + 1, name));
@@ -21,16 +25,16 @@ const getNewTodoModel = (name: string): ThunkAction<Promise<TodoModel>, StoreSta
 const addTodoWithAnimation = async (dispatch: Dispatch<StoreState>, name: string) => {
   let model = await dispatch(getNewTodoModel(name));
   await dispatch(actions.addTodo(model));
-  setTimeout(() => dispatch(actions.updateToDoVisibility(model.id, true)), 10);
+  await timeOut(10);
+  dispatch(actions.updateToDoVisibility(model.id, true));
 };
 
 const updateTodoStatusWithAnimation = async (dispatch: Dispatch<StoreState>, id: number, completed: boolean) => {
   dispatch(actions.updateToDoVisibility(id, false));
-  setTimeout(() => {
-              dispatch(actions.updateTodoStatus(id, completed));
-              setTimeout(() => dispatch(actions.updateToDoVisibility(id, true)), 30);
-            },
-             300);
+  await timeOut(300);
+  dispatch(actions.updateTodoStatus(id, completed));
+  await timeOut(30);
+  dispatch(actions.updateToDoVisibility(id, true));
 };
 
 export function mapDispatchToProps(dispatch: Dispatch<StoreState>): DispatchProps {
