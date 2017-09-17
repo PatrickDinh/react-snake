@@ -1,9 +1,9 @@
-import TodoList, { DispatchProps } from '../components/TodoList/TodoList';
-import * as actions from '../actions/index';
+import TodoList, { DispatchProps } from '../../components/TodoList/TodoList';
+import * as actions from '../../actions/index';
 import { connect } from 'react-redux';
-import { StoreState } from '../types/index';
+import { StoreState } from '../../types/index';
 import { Dispatch } from 'redux';
-import TodoModel from '../models/TodoModel';
+import TodoModel from '../../models/TodoModel';
 import { ThunkAction } from 'redux-thunk';
 
 export function mapStateToProps(state: StoreState) {
