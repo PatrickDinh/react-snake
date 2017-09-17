@@ -3,7 +3,7 @@ import { StoreState } from '../types/index';
 import * as constants from '../constants/index';
 import TodoModel from '../models/TodoModel';
 
-type ActionOnTodoModel = (todo: TodoModel) => void;
+type ActionOnTodoModel = (todo: TodoModel) => TodoModel;
 
 function addNewTodo(state: StoreState, todo: TodoModel): StoreState {
   return {
@@ -13,25 +13,29 @@ function addNewTodo(state: StoreState, todo: TodoModel): StoreState {
 }
 
 function findAndUpdateTodoModel(state: StoreState, id: number, actionOnTodoModel: ActionOnTodoModel): StoreState {
-  let todo = state.todoList.find(t => t.id === id);
-  if (!todo) {
-    throw new Error('Todo cannot be found');
-  }
-
-  actionOnTodoModel(todo);
-
   return {
     ...state,
-    todoList: [...state.todoList]
+    todoList: state.todoList.map(td => {
+      if (td.id === id) {
+        return actionOnTodoModel(td);
+      }
+      return td;
+    })
   };
 }
 
 function updateTodoStatus(state: StoreState, id: number, completed: boolean): StoreState {
-  return findAndUpdateTodoModel(state, id, (x: TodoModel) => { x.completed = completed; });
+  return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
+      ...x,
+      completed
+   }));
 }
 
 function updateTodoVisibility(state: StoreState, id: number, shown: boolean): StoreState {
-  return findAndUpdateTodoModel(state, id, (x: TodoModel) => { x.shown = shown; });
+  return findAndUpdateTodoModel(state, id, (x: TodoModel) => ({
+    ...x,
+    shown
+ }));
 }
 
 export function todoListReducer(state: StoreState, action: TodoActions): StoreState {

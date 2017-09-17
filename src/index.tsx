@@ -9,7 +9,12 @@ import TodoModel from './models/TodoModel';
 import thunk from 'redux-thunk';
 
 const initialStage = {
-  todoList: [ new TodoModel(1, 'Learn React', true) ]
+  todoList: [
+    {
+      ...(new TodoModel(1, 'Learn React')),
+      shown: true
+    }
+  ]
 };
 
 const store = createStore<StoreState>(todoListReducer,
