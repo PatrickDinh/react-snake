@@ -22,7 +22,7 @@ class TodoList extends React.Component<StateProps & DispatchProps, object> {
     const { todoList, onAddTodo, onTodoStatusUpdated } = this.props;
 
     const outStandingTodos = todoList.filter(td => !td.completed)
-      .sort((a, b) => a.id - b.id);
+      .sort((a, b) => TimeComparer(b.createdTime, a.createdTime));
 
     const doneTodos = todoList.filter(td => td.completed)
       .sort((a, b) => TimeComparer(a.completedTime, b.completedTime));

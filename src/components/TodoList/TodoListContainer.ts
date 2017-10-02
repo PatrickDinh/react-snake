@@ -6,6 +6,7 @@ import { Dispatch } from 'redux';
 import TodoModel from '../../models/TodoModel';
 import { ThunkAction } from 'redux-thunk';
 import { TimeOut } from '../../common/time-out';
+import * as moment from 'moment';
 
 export function mapStateToProps(state: StoreState) {
   return { 
@@ -15,7 +16,10 @@ export function mapStateToProps(state: StoreState) {
 
 const getNewTodoModel = (name: string): ThunkAction<Promise<TodoModel>, StoreState, null> => {
   return (dispatch: Dispatch<StoreState>, getState: () => StoreState) => {
-    return Promise.resolve(new TodoModel(getState().todoList.length + 1, name));
+    let model = new TodoModel(getState().todoList.length + 1, name);
+    model.createdTime = moment().toDate();
+
+    return Promise.resolve(model);
   };
 };
 
