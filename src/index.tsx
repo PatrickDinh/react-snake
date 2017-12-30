@@ -9,14 +9,19 @@ import TodoModel from './models/TodoModel';
 import thunk from 'redux-thunk';
 import * as moment from 'moment';
 
-const initialStage = {
-  todoList: [
-    {
-      ...(new TodoModel(1, 'Learn React')),
+const seedTodos = ['Learn React', 'Learn Redux (optional)', 'Learn Unit Test', 'Learn .NET Core', 'Learn Docker'];
+
+const gimmeSomethingTodo = (): TodoModel[] => {
+  return seedTodos.map((s, i) =>
+    ({
+      ...(new TodoModel(i + 1, s)),
       shown: true,
       createdTime: moment().toDate()
-    }
-  ]
+    }));
+};
+
+const initialStage = {
+  todoList: gimmeSomethingTodo()
 };
 
 const store = createStore<StoreState>(todoListReducer,
