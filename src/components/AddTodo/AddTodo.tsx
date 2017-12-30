@@ -18,6 +18,7 @@ export class AddTodo extends React.Component<Props, State> {
 
     this.handleSave = this.handleSave.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   handleSave() {
@@ -31,6 +32,12 @@ export class AddTodo extends React.Component<Props, State> {
     this.setState({ text: e.target.value });
   }
 
+  handleKeyPress(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      this.handleSave();
+    }
+  }
+
   render() {
     return (
       <div>
@@ -38,6 +45,7 @@ export class AddTodo extends React.Component<Props, State> {
           type="text"
           value={this.state.text}
           onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
         <button onClick={this.handleSave}>+</button>
       </div>
