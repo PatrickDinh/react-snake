@@ -28,7 +28,7 @@ export class AddTodo extends React.Component<Props, State> {
   }
 
   handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({ text: e.target.value.trim() });
+    this.setState({ text: e.target.value });
   }
 
   render() {
