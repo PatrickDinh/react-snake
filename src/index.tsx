@@ -7,12 +7,14 @@ import { Provider } from 'react-redux';
 import { todoListReducer } from './components/TodoList/TodoListReducer';
 import TodoModel from './models/TodoModel';
 import thunk from 'redux-thunk';
+import * as moment from 'moment';
 
 const initialStage = {
   todoList: [
     {
       ...(new TodoModel(1, 'Learn React')),
-      shown: true
+      shown: true,
+      createdTime: moment().toDate()
     }
   ]
 };
