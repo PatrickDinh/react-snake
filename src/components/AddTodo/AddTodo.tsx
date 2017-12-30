@@ -21,7 +21,7 @@ export class AddTodo extends React.Component<Props, State> {
   }
 
   handleSave() {
-    this.props.onAddTodo(this.state.text);
+    this.props.onAddTodo(this.state.text.trim());
     this.state = {
       text: ''
     };
